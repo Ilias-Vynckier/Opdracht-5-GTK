@@ -1,0 +1,5 @@
+/home/pi/embed2/Opdracht-5-GTK/build/CMakeFiles/edit_cache.dir
+/home/pi/embed2/Opdracht-5-GTK/build/CMakeFiles/package_source.dir
+/home/pi/embed2/Opdracht-5-GTK/build/CMakeFiles/Opdracht5.dir
+/home/pi/embed2/Opdracht-5-GTK/build/CMakeFiles/rebuild_cache.dir
+/home/pi/embed2/Opdracht-5-GTK/build/CMakeFiles/package.dir
