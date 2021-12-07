@@ -9,11 +9,12 @@
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <child>
-          <object class="GtkButton" id="button1">
-            <property name="label" translatable="yes">button</property>
+          <object class="GtkToggleButton" id="LED1">
+            <property name="label" translatable="yes">LED1</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
+            <property name="active">True</property>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -22,7 +23,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkToggleButton" id="togglebutton1">
+          <object class="GtkToggleButton" id="togglebutton2">
             <property name="label" translatable="yes">togglebutton</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
@@ -35,17 +36,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="button2">
-            <property name="label" translatable="yes">button</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-          </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">2</property>
-          </packing>
+          <placeholder/>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
     </child>
