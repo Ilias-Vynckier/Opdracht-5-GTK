@@ -9,6 +9,8 @@
 /home/pi/embed2/Opdracht-5-GTK/main.c
 gtk/gtk.h
 -
+gpiod.h
+-
 
 /usr/include/atk-1.0/atk/atk-enum-types.h
 atk/atkversion.h

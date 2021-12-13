@@ -20,4 +20,4 @@ add_definitions(${GTK2_CFLAGS_OTHER})
 # Add an executable compiled from hello.c
 add_executable(Opdracht5 main.c)
 # Link the target to the GTK+ libraries
-target_link_libraries(Opdracht5 ${GTK2_LIBRARIES})
+target_link_libraries(Opdracht5 ${GTK2_LIBRARIES} gpiod)
