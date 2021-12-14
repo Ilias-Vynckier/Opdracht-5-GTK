@@ -12,9 +12,6 @@ void check_toggleL1(GtkWidget *wid, gpointer ptr)
 
 void check_toggleL2(GtkWidget *wid, gpointer ptr)
 {
-    /* printf("The state of the LED2 is %d\n",
-           gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(wid)));*/
-
     GPIO(19, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(wid)));
 }
 
@@ -70,7 +67,7 @@ void main(int argc, char *argv[])
 int GPIO(int gpio, int i)
 {
     int state = 0;
-    //printf("%d\r\n", i);
+
     const char *chipname = "gpiochip0";
     struct gpiod_chip *chip;
     struct gpiod_line *gpio26; // GPIO 26
