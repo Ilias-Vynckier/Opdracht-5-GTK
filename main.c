@@ -1,7 +1,7 @@
 #include <gtk/gtk.h>
 #include <gpiod.h>
 #include <string.h>
-GtkWidget *txt;
+
 void check_toggleL1(GtkWidget *wid, gpointer ptr)
 {
     /* printf("The state of the LED1 is %d\n",
@@ -20,16 +20,16 @@ void check_toggleL2(GtkWidget *wid, gpointer ptr)
 
 void check_toggleI1(GtkWidget *wid, gpointer ptr)
 {
-    /*printf("The state of the LED2 is %d\n",
-           GPIO(23, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(wid))));*/
-
-   
-    char test[]="0";
-  //  printf("dink");
+    char test[1];
     sprintf(test, "%d", GPIO(23, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(wid))));
-    printf("%d",test);
-    //gtk_label_set_text(GTK_LABEL(ptr), test);
-    //gtk_label_set_markup(GTK_LABEL(ptr),"test");
+    gtk_label_set_text(GTK_LABEL(ptr), test);
+}
+
+void check_toggleI2(GtkWidget *wid, gpointer ptr)
+{
+    char test[1];
+    sprintf(test, "%d", GPIO(22, gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(wid))));
+    gtk_label_set_text(GTK_LABEL(ptr), test);
 }
 
 void main(int argc, char *argv[])
@@ -48,7 +48,7 @@ void main(int argc, char *argv[])
     GtkWidget *btnI2 = (GtkWidget *)gtk_builder_get_object(builder,
                                                            "INPUT2");
     GtkWidget *lbl1 = gtk_builder_get_object(builder, "INPUTLBL1");
-    GtkWidget *lbl2 = gtk_label_new("INPUTLBL2");
+    GtkWidget *lbl2 = gtk_builder_get_object(builder, "INPUTLBL2");
 
     g_signal_connect(btnL1, "toggled",
                      G_CALLBACK(check_toggleL1),
@@ -59,8 +59,9 @@ void main(int argc, char *argv[])
     g_signal_connect(btnI1, "toggled",
                      G_CALLBACK(check_toggleI1),
                      lbl1);
-
-    txt = gtk_entry_new();
+    g_signal_connect(btnI2, "toggled",
+                     G_CALLBACK(check_toggleI2),
+                     lbl2);
 
     gtk_widget_show_all(win);
     gtk_main();
@@ -69,7 +70,6 @@ void main(int argc, char *argv[])
 int GPIO(int gpio, int i)
 {
     int state = 0;
-    char buf[]="0";
     //printf("%d\r\n", i);
     const char *chipname = "gpiochip0";
     struct gpiod_chip *chip;
@@ -121,9 +121,7 @@ int GPIO(int gpio, int i)
         }
         break;
     case 23:
-        sprintf(buf, "%d", gpiod_line_get_value(gpio23));
-
-        
+        state = gpiod_line_get_value(gpio23);
         break;
     case 22:
         state = gpiod_line_get_value(gpio22);
@@ -138,5 +136,6 @@ int GPIO(int gpio, int i)
     gpiod_line_release(gpio19);
     gpiod_line_release(gpio23);
     gpiod_line_release(gpio22);
-    return buf;
+
+    return state;
 }
